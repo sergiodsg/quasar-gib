@@ -54,6 +54,7 @@ const toggleLeftDrawer = () => {
             <q-img src="src\assets\logo-app.png" class="logo-app" spinner-color="white" />
           </q-btn>
         </q-toolbar-title>
+        <q-btn label="About us" flat to="/" no-caps />
       </q-toolbar>
     </q-header>
 

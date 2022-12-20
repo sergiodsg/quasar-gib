@@ -34,5 +34,4 @@ const props = defineProps({
       </q-item-section>
     </q-item>
   </div>
-
 </template>

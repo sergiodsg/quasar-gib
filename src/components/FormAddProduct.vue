@@ -36,7 +36,7 @@ const onReset = () => {
 
 <template>
   <div class="q-pa-md" style="max-width: 1000px">
-
+    <h5>Agregar nuevo producto</h5>
     <q-form @submit="onSubmit" @reset="onReset">
       <div class="row col-4 col-sm-4 col-md-6 q-gutter-sm justify-center">
         <q-input filled v-model="aba" label="Aba del producto" lazy-rules
@@ -66,8 +66,8 @@ const onReset = () => {
           :rules="[val => val && val.length > 0 || 'Campo vacío']" />
       </div>
 
-      <div>
-        <q-btn label="Submit" type="submit" color="primary" />
+      <div class="row q-gutter-sm justify-center">
+        <q-btn label="Agregar" type="submit" color="primary" />
         <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
       </div>
     </q-form>

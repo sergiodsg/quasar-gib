@@ -12,7 +12,7 @@ const routes = [
         component: () => import("pages/ModificarInfo.vue"),
       },
       { path: "/graficos", component: () => import("pages/GraficarInfo.vue") },
-      { path: "/about", component: () => import("pages/IndexPage.vue") },
+      { path: "/about", component: () => import("pages/AboutApp.vue") },
       { path: "/login", component: () => import("pages/IndexPage.vue") },
     ],
   },
