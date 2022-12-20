@@ -23,9 +23,9 @@ const props = defineProps({
 
 <template>
   <div>
-    <q-item clickable v-ripple :to=link>
-      <q-item-section>
-        <q-icon :name="icon" />
+    <q-item class="items-drawer" clickable v-ripple :to=link>
+      <q-item-section class="icons-drawer">
+        <q-icon :name="icon" size="30px" />
       </q-item-section>
 
       <q-item-section>

@@ -9,31 +9,31 @@ const links = [
     title: "Mostrar",
     caption: "Visualiza todos los productos y su información",
     link: "/mostrar",
-    icon: "fa-solid fa-file-alt"
+    icon: "article"
   },
   {
     title: "Agregar",
     caption: "Añade nuevos productos y registra sus datos",
     link: "/agregar",
-    icon: "fa-solid fa-file-import"
+    icon: "add_circle_outline"
   },
   {
     title: "Eliminar",
     caption: "Quita productos de la lista",
     link: "/eliminar",
-    icon: "fa-solid fa-file-excel"
+    icon: "delete_sweep"
   },
   {
     title: "Modificar",
     caption: "Modifica la información de los productos",
     link: "/modificar",
-    icon: "fa-solid fa-file-signature"
+    icon: "create"
   },
   {
     title: "Gráficos",
-    caption: "Renderiza graficos adicionales representando la información de los productos",
+    caption: "Renderiza graficos adicionales",
     link: "/graficos",
-    icon: "fa-solid fa-chart-pie"
+    icon: "show_chart"
   }
 ];
 
@@ -46,14 +46,13 @@ const toggleLeftDrawer = () => {
 <template>
   <q-layout view="lHh lpR fFf">
 
-    <q-header elevated class="bg-orange-10 text-white">
+    <q-header elevated class="bg-deep-orange-6 text-white">
       <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
-
+        <q-btn dense flat round icon="menu" size="lg" @click="toggleLeftDrawer" />
         <q-toolbar-title>
-          <q-img src="src\assets\logo-app.png" spinner-color="white" style="height: 75px; max-width: 150px" />
-
-
+          <q-btn class="container-logo-app row justify-center" flat to="/">
+            <q-img src="src\assets\logo-app.png" class="logo-app" spinner-color="white" />
+          </q-btn>
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
