@@ -51,7 +51,6 @@ const agregarProducto = () => {
     });
 }
 
-
 const onReset = () => {
   aba.value = null;
   nombreBanco.value = null;
