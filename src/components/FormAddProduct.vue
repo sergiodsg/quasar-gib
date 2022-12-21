@@ -1,6 +1,8 @@
 <script setup>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 const $q = useQuasar();
 
@@ -14,13 +16,41 @@ const direccion_ip_banco = ref(null);
 const direccion_ip_empresa = ref(null);
 
 const onSubmit = () => {
-  $q.notify({
-    color: 'green-4',
-    textColor: 'white',
-    icon: 'cloud_done',
-    message: 'Submitted'
-  })
+  agregarProducto();
 }
+
+const agregarProducto = () => {
+  console.log(aba.value);
+  addDoc(collection(db, "productos"), {
+    aba: aba.value,
+    nombreBanco: nombreBanco.value,
+    ambiente: ambiente.value,
+    switchProducto: switchProducto.value,
+    producto: producto.value,
+    puerto: puerto.value,
+    direccion_ip_banco: direccion_ip_banco.value,
+    direccion_ip_empresa: direccion_ip_empresa.value
+  })
+    .then(() => {
+      $q.notify({
+        color: 'green-4',
+        textColor: 'white',
+        icon: 'cloud_done',
+        message: 'Se agregó el producto exitosamente'
+      });
+    })
+    .catch((e) => {
+      console.log(e);
+
+      $q.notify({
+        color: 'red-5',
+        textColor: 'white',
+        icon: 'warning',
+        message: 'No se pudieron registrar los datos'
+      });
+    });
+}
+
 
 const onReset = () => {
   aba.value = null;

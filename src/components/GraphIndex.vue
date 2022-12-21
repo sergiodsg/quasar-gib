@@ -4,20 +4,16 @@ import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, Li
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
-const Graph = {
-  name: 'BarChart',
-  components: { Bar },
-  props: {
-    chartData: {
-      type: Object,
-      required: true
-    },
-    chartOptions: {
-      type: Object,
-      default: () => { }
-    }
+const props = defineProps({
+  chartData: {
+    type: Object,
+    required: true
+  },
+  chartOptions: {
+    type: Object,
+    default: () => { }
   }
-}
+})
 </script>
 
 <template>
