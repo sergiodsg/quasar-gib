@@ -1,9 +1,19 @@
 <script setup>
+import GraphIndex from 'src/components/GraphIndex.vue';
 
+const dataGraph = {
+  chartData: {
+    labels: ['January', 'February', 'March'],
+    datasets: [{ data: [40, 20, 12] }]
+  },
+  chartOptions: {
+    responsive: true
+  }
+}
 </script>
 
 <template>
   <q-page class="flex flex-center">
-    <img alt="Quasar logo" src="~assets/quasar-logo-vertical.svg" style="width: 200px; height: 200px">
+    <GraphIndex :data="dataGraph.chartData" :options="dataGraph.chartOptions" />
   </q-page>
 </template>
