@@ -4,7 +4,13 @@ import GraphIndex from 'src/components/GraphIndex.vue';
 const dataGraph = {
   chartData: {
     labels: ['January', 'February', 'March'],
-    datasets: [{ data: [40, 20, 12] }]
+    datasets: [
+      {
+        label: 'Data One',
+        backgroundColor: '#B2DDF7',
+        data: [40, 20, 12]
+      }
+    ]
   },
   chartOptions: {
     responsive: true

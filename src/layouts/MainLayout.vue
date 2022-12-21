@@ -45,7 +45,6 @@ const toggleLeftDrawer = () => {
 
 <template>
   <q-layout view="lHh lpR fFf">
-
     <q-header elevated class="bg-deep-orange-6 text-white">
       <q-toolbar>
         <q-btn dense flat round icon="menu" size="lg" @click="toggleLeftDrawer" />
@@ -54,7 +53,7 @@ const toggleLeftDrawer = () => {
             <q-img src="src\assets\logo-app.png" class="logo-app" spinner-color="white" />
           </q-btn>
         </q-toolbar-title>
-        <q-btn label="About us" flat to="/" no-caps />
+        <q-btn label="About us" flat to="/about" no-caps />
       </q-toolbar>
     </q-header>
 
