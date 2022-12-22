@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, provide } from 'vue';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 
@@ -53,7 +53,6 @@ const obtenerProductos = async () => {
     rows.value.push(productos_data_table);
   });
   is_loading.value = false;
-  console.log(productosLista[0].aba);
 }
 
 obtenerProductos();
