@@ -24,6 +24,8 @@ const columns = [
 
 const rows = ref([]);
 
+const is_loading = ref(true);
+
 const aba = ref(null);
 const nombreBanco = ref(null);
 const ambiente = ref(null);
@@ -50,7 +52,7 @@ const obtenerProductos = async () => {
     };
     rows.value.push(productos_data_table);
   });
-
+  is_loading.value = false;
   console.log(productosLista[0].aba);
 }
 
@@ -59,6 +61,10 @@ obtenerProductos();
 
 <template>
   <div class="q-pa-md">
-    <q-table title="Productos" :rows="rows" :columns="columns" :row-key="aba" />
+    <q-table title="Productos" :rows="rows" :columns="columns" :row-key="aba" :loading="is_loading">
+      <template v-slot:loading>
+        <q-inner-loading showing color="primary" />
+      </template>
+    </q-table>
   </div>
 </template>
