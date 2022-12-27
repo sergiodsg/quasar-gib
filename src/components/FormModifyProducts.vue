@@ -1,6 +1,8 @@
 <script setup>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
+import { collection, query, where, getDocs, runTransaction, setDoc, doc } from "firebase/firestore";
+import { db } from "../firebase";
 
 const $q = useQuasar();
 
@@ -16,13 +18,41 @@ const direccion_ip_banco = ref(null);
 const direccion_ip_empresa = ref(null);
 
 const onSubmit = () => {
-  $q.notify({
-    color: 'green-4',
-    textColor: 'white',
-    icon: 'cloud_done',
-    message: 'Submitted'
-  })
+  modificarProducto(abaMod, puertoMod);
 }
+
+const modificarProducto = async (abaMod, puertoMod) => {
+  const productosRef = collection(db, "productos");
+  const q = query(productosRef, where("aba", "==", abaMod.value), where("puerto", "==", puertoMod.value));
+  const querySnapshot = await getDocs(q);
+  const idSelected = querySnapshot.docs.map((doc) => doc.id);
+  for (let i = 0; i < idSelected.length; i++) {
+    //const sfDocRef = doc(db, "banks", idSelected[i]);
+    try {
+      await runTransaction(db, async (transaction) => {
+        // const sfDoc = await transaction.get(sfDocRef);
+        // if (!sfDoc.exists()) {
+        //   throw "Document does not exist!";
+        // }
+
+        await setDoc(doc(db, "productos", idSelected[i]), {
+          aba: aba.value,
+          nombreBanco: nombreBanco.value,
+          ambiente: ambiente.value,
+          switchProducto: switchProducto.value,
+          producto: producto.value,
+          puerto: puerto.value,
+          direccion_ip_banco: direccion_ip_banco.value,
+          direccion_ip_empresa: direccion_ip_empresa.value
+        });
+      });
+      console.log("Transaction successfully committed!");
+    } catch (e) {
+      console.log("Transaction failed: ", e);
+    }
+  }
+}
+
 
 const onReset = () => {
   abaMod.value = null;
