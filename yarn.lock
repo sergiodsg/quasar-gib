@@ -1069,12 +1069,26 @@
   "resolved" "https://registry.npmjs.org/chardet/-/chardet-0.7.0.tgz"
   "version" "0.7.0"
 
-"chart.js@^4.1.1":
+"chart.js@^4.1.1", "chart.js@>=2.8.0", "chart.js@>=3.0.2":
   "integrity" "sha512-P0pCosNXp+LR8zO/QTkZKT6Hb7p0DPFtypEeVOf+6x06hX13NIb75R0DXUA4Ksx/+48chDQKtCCmRCviQRTqsA=="
   "resolved" "https://registry.npmjs.org/chart.js/-/chart.js-4.1.1.tgz"
   "version" "4.1.1"
   dependencies:
     "@kurkle/color" "^0.3.0"
+
+"chartjs-adapter-date-fns@>=2.0.0":
+  "integrity" "sha512-Rs3iEB3Q5pJ973J93OBTpnP7qoGwvq3nUnoMdtxO+9aoJof7UFcRbWcIDteXuYd1fgAvct/32T9qaLyLuZVwCg=="
+  "resolved" "https://registry.npmjs.org/chartjs-adapter-date-fns/-/chartjs-adapter-date-fns-3.0.0.tgz"
+  "version" "3.0.0"
+
+"chartkick@>=3.2.0":
+  "integrity" "sha512-7yYZyxeFhOh/LA7gc1VwDFgc6t4ZM9RrbBjgb4dJoFukk2+94QkK0yulYI2OUH1cjcfrf1qmj04FkjZx7kZDeg=="
+  "resolved" "https://registry.npmjs.org/chartkick/-/chartkick-4.2.0.tgz"
+  "version" "4.2.0"
+  optionalDependencies:
+    "chart.js" ">=3.0.2"
+    "chartjs-adapter-date-fns" ">=2.0.0"
+    "date-fns" ">=2.0.0"
 
 "chokidar@^3.5.3", "chokidar@>=3.0.0 <4.0.0":
   "integrity" "sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw=="
@@ -1262,6 +1276,11 @@
   "integrity" "sha512-Z1PhmomIfypOpoMjRQB70jfvy/wxT50qW08YXO5lMIJkrdq4yOTR+AW7FqutScmB9NkLwxo+jU+kZLbofZZq/w=="
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-2.6.21.tgz"
   "version" "2.6.21"
+
+"date-fns@>=2.0.0":
+  "integrity" "sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA=="
+  "resolved" "https://registry.npmjs.org/date-fns/-/date-fns-2.29.3.tgz"
+  "version" "2.29.3"
 
 "debug@^4.1.1":
   "integrity" "sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ=="
@@ -3129,6 +3148,13 @@
   "resolved" "https://registry.npmjs.org/vue-chartjs/-/vue-chartjs-5.1.0.tgz"
   "version" "5.1.0"
 
+"vue-chartkick@^1.1.0":
+  "integrity" "sha512-6kn50SX5qk8BV1HiFK82XEjxcP0SG7PBHkSwJoCZT+Bsjv67IEnbk0G/iygA5XodIvRLzTUvYZs2oQ+uB4efEw=="
+  "resolved" "https://registry.npmjs.org/vue-chartkick/-/vue-chartkick-1.1.0.tgz"
+  "version" "1.1.0"
+  dependencies:
+    "chartkick" ">=3.2.0"
+
 "vue-eslint-parser@^9.0.1":
   "integrity" "sha512-NGn/iQy8/Wb7RrRa4aRkokyCZfOUWk19OP5HP6JEozQFX5AoS/t+Z0ZN7FY4LlmWc4FNI922V7cvX28zctN8dQ=="
   "resolved" "https://registry.npmjs.org/vue-eslint-parser/-/vue-eslint-parser-9.1.0.tgz"
@@ -3149,7 +3175,7 @@
   dependencies:
     "@vue/devtools-api" "^6.4.5"
 
-"vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.29", "vue@3.2.45":
+"vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.29", "vue@>=3.0.0", "vue@3.2.45":
   "integrity" "sha512-9Nx/Mg2b2xWlXykmCwiTUCWHbWIj53bnkizBxKai1g61f2Xit700A1ljowpTIM11e3uipOeiPcSqnmBg6gyiaA=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.2.45.tgz"
   "version" "3.2.45"

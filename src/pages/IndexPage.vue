@@ -1,14 +1,13 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watchEffect } from "vue";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import GraphIndex from "src/components/GraphIndex.vue";
 
 let puertos_por_banco = {};
-let bancos = [];
-let puertos = [];
+let datos = [];
 
-const obtenerProductos = async () => {
+watchEffect(async () => {
   const productosCol = collection(db, "productos");
   const productosSnapshot = await getDocs(productosCol);
   const productosLista = productosSnapshot.docs.map((doc) => doc.data());
@@ -20,36 +19,18 @@ const obtenerProductos = async () => {
         puertos_por_banco[productosLista[i].nombreBanco] + 1;
     }
   }
-  bancos = Object.keys(puertos_por_banco);
-  puertos = Object.values(puertos_por_banco);
-};
-
-obtenerProductos();
-
-const dataGraph = {
-  chartData: {
-    labels: Object.keys(puertos_por_banco),
-    datasets: [
-      {
-        label: "",
-        backgroundColor: "#B2DDF7",
-        data: Object.values(puertos_por_banco),
-      },
-    ],
-  },
-  chartOptions: {
-    responsive: true,
-  },
-};
-
-console.log(puertos_por_banco);
-console.log(bancos);
-console.log(puertos);
-console.log(Object.getOwnPropertyNames(puertos_por_banco));
+  console.log(puertos_por_banco);
+  const labels = Object.keys(puertos_por_banco);
+  const values = Object.values(puertos_por_banco);
+  for (let i = 0; i < values.length; i++) {
+    datos.push([labels[i], values[i]]);
+  }
+  console.log(datos);
+})
 </script>
 
 <template>
   <q-page class="flex flex-center">
-    <GraphIndex :data="dataGraph.chartData" :options="dataGraph.chartOptions" />
+    <column-chart :data="datos"></column-chart>
   </q-page>
 </template>
