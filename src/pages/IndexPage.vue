@@ -2,12 +2,11 @@
 import { ref, watchEffect } from "vue";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import GraphIndex from "src/components/GraphIndex.vue";
 
 let puertos_por_banco = {};
-let datos = [];
+let datos = ref({});
 
-watchEffect(async () => {
+const getData = async () => {
   const productosCol = collection(db, "productos");
   const productosSnapshot = await getDocs(productosCol);
   const productosLista = productosSnapshot.docs.map((doc) => doc.data());
@@ -20,13 +19,11 @@ watchEffect(async () => {
     }
   }
   console.log(puertos_por_banco);
-  const labels = Object.keys(puertos_por_banco);
-  const values = Object.values(puertos_por_banco);
-  for (let i = 0; i < values.length; i++) {
-    datos.push([labels[i], values[i]]);
-  }
-  console.log(datos);
-})
+  datos.value = puertos_por_banco;
+  return datos;
+}
+
+getData();
 </script>
 
 <template>
