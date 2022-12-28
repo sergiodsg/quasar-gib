@@ -27,13 +27,8 @@ const modificarProducto = async (abaMod, puertoMod) => {
   const querySnapshot = await getDocs(q);
   const idSelected = querySnapshot.docs.map((doc) => doc.id);
   for (let i = 0; i < idSelected.length; i++) {
-    //const sfDocRef = doc(db, "banks", idSelected[i]);
     try {
       await runTransaction(db, async (transaction) => {
-        // const sfDoc = await transaction.get(sfDocRef);
-        // if (!sfDoc.exists()) {
-        //   throw "Document does not exist!";
-        // }
 
         await setDoc(doc(db, "productos", idSelected[i]), {
           aba: aba.value,
@@ -46,8 +41,19 @@ const modificarProducto = async (abaMod, puertoMod) => {
           direccion_ip_empresa: direccion_ip_empresa.value
         });
       });
-      console.log("Transaction successfully committed!");
+      $q.notify({
+        color: 'green-4',
+        textColor: 'white',
+        icon: 'cloud_done',
+        message: 'Se modificó el producto exitosamente'
+      });
     } catch (e) {
+      $q.notify({
+        color: 'red-5',
+        textColor: 'white',
+        icon: 'warning',
+        message: 'No se pudo registrar el producto'
+      });
       console.log("Transaction failed: ", e);
     }
   }

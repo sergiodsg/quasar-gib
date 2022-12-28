@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watchEffect } from "vue";
+import { ref } from "vue";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 
@@ -28,6 +28,6 @@ getData();
 
 <template>
   <q-page class="flex flex-center">
-    <column-chart :data="datos"></column-chart>
+    <column-chart :data="datos" :colors="['#F79420']"></column-chart>
   </q-page>
 </template>
